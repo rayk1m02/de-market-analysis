@@ -5,3 +5,4 @@ dbt_packages/
 logs/
 dev.duckdb
 project_planning.txt
+.vscode/
