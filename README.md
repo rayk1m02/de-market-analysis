@@ -11,7 +11,7 @@ Comparing DE-adjacent labor market and COL data across AUS, SEA, CHI, DC, and NY
 ## Notes
 - All LAUS series use not-seasonally-adjusted data
 - All LAUS series use Area type: Metropolitan areas
-- Metropolitan areas selected:k
+- Metropolitan areas selected:
     - Austin-Round Rock-San Marcos, TX
     - Seattle-Tacoma-Bellevue, WA
     - Chicago-Naperville-Elgin, IL-IN
