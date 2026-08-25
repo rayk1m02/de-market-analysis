@@ -8,11 +8,13 @@ load_dotenv()
 api_key = os.getenv("BLS_API_KEY")
 
 # One entry per metro: unemployment rate, unemployment figure, employment figure, labor force
+# AUS, SEA, CHI, DC, and NYC
 series_ids = {
+    "austin": ["LAUMT481242000000003", "LAUMT481242000000004", "LAUMT481242000000005", "LAUMT481242000000006"],
+    "seattle": ["LAUMT534266000000003", "LAUMT534266000000004", "LAUMT534266000000005", "LAUMT534266000000006"],
     "chicago": ["LAUMT171698000000003", "LAUMT171698000000004", "LAUMT171698000000005", "LAUMT171698000000006"],
-    # "austin": [...],
-    # "dc": [...],
-    # "nyc": [...],
+    "dc": ["LAUMT114790000000003", "LAUMT114790000000004", "LAUMT114790000000005", "LAUMT114790000000006"],
+    "nyc": ["LAUMT363562000000003", "LAUMT363562000000004", "LAUMT363562000000005", "LAUMT363562000000006"]
 }
 
 def extract_laus(series_ids, start_year="2016", end_year="2026"):
@@ -61,7 +63,7 @@ def extract_laus(series_ids, start_year="2016", end_year="2026"):
 
     df_lookup = pd.DataFrame(series_lookup).drop_duplicates()
     df_data = pd.DataFrame(records)
-
+    
     return df_lookup, df_data
 
 if __name__ == "__main__":
