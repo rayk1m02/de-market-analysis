@@ -1,5 +1,4 @@
 #%%
-
 from dotenv import load_dotenv
 import os
 import duckdb
@@ -9,5 +8,5 @@ api_key = os.getenv("BLS_API_KEY")
 print(api_key)
 
 con = duckdb.connect("dev.duckdb")
-con.execute("SELECT * FROM raw_laus_series").df()
+con.execute("SELECT * FROM raw_laus_data").df()
 # %%
