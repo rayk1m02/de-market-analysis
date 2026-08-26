@@ -7,8 +7,7 @@ import os
 load_dotenv()
 api_key = os.getenv("BLS_API_KEY")
 
-# One entry per metro: unemployment rate, unemployment figure, employment figure, labor force
-# AUS, SEA, CHI, DC, and NYC
+# Each metro maps to 4 series IDs, stored long (one row per series): unemployment rate, unemployment, employment, labor force.
 series_ids = {
     "austin": ["LAUMT481242000000003", "LAUMT481242000000004", "LAUMT481242000000005", "LAUMT481242000000006"],
     "seattle": ["LAUMT534266000000003", "LAUMT534266000000004", "LAUMT534266000000005", "LAUMT534266000000006"],
