@@ -58,6 +58,7 @@ con.execute(f"""
     WHERE trim(series_id) IN ({ids_str})
 """)
 
-print(con.execute("SELECT COUNT(*) FROM raw_oews_series").df())
-# oews.alldata is categorized by datatype_code suffix. We will use our staging models to make sense between oews.series and oews.data
-print(con.execute("SELECT COUNT(*) FROM raw_oews_data").df())
+if __name__ == "__main__":
+    print(con.execute("SELECT COUNT(*) FROM raw_oews_series").df())
+    # oews.alldata is categorized by datatype_code suffix. We will use our staging models to make sense between oews.series and oews.data
+    print(con.execute("SELECT COUNT(*) FROM raw_oews_data").df())
