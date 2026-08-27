@@ -6,3 +6,4 @@ logs/
 dev.duckdb
 project_planning.txt
 .vscode/
+extract/raw_downloads/
