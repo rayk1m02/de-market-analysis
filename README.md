@@ -17,6 +17,7 @@ Comparing DE-adjacent labor market and COL data across AUS, SEA, CHI, DC, and NY
     - Chicago-Naperville-Elgin, IL-IN
     - Washington-Arlington-Alexandria, DC-VA-MD-WV
     - New York-Newark-Jersey City, NY-NJ
+- COL data (ACS) lags roughly 1-2 years behind labor market data (LAUS/OEWS) due to each source's release cadence. Comparisons should be read as approximately concurrent, not simultaneous. 
 
 ## Setup
 
