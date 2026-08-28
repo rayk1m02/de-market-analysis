@@ -20,6 +20,11 @@ Query shape:
     ?get=NAME,B19013_001E,B25031_001E,B25077_001E
     &for=metropolitan statistical area/micropolitan statistical area:{cbsa_code}
     &key={api_key}
+
+    https://api.census.gov/data/2024/acs/acs5
+    ?get=NAME,B19013_001E,B25031_001E,B25077_001E
+    &for=metropolitan%20statistical%20area/micropolitan%20statistical%20area:12420
+    &key=YOUR_KEY
 '''
 import requests
 import pandas as pd
@@ -29,3 +34,24 @@ import os
 
 load_dotenv()
 api_key = os.getenv("ACS_API_KEY")
+
+geography_ids = {
+    "austin": "12420",
+    "seattle": "42660",
+    "chicago": "16980",
+    "dc": "47900",
+    "nyc": "35620"
+}
+
+acs_value_ids = {
+    "name": "NAME",
+    "med_household_income": "B19013_001E",
+    "med_gross_rent": "B25031_001E",
+    "med_home_value": "B25077_001E"
+}
+
+def extract_acs():
+    url = "https://api.census.gov/data/2024/acs/acs5"
+
+    
+    return None
