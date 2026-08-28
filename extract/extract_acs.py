@@ -43,15 +43,28 @@ geography_ids = {
     "nyc": "35620"
 }
 
-acs_value_ids = {
-    "name": "NAME",
-    "med_household_income": "B19013_001E",
-    "med_gross_rent": "B25031_001E",
-    "med_home_value": "B25077_001E"
-}
+acs_value_ids = ["NAME", "B19013_001E", "B25031_001E", "B25077_001E"]
 
-def extract_acs():
+def extract_acs(geography_ids, acs_value_ids, api_key):
     url = "https://api.census.gov/data/2024/acs/acs5"
 
-    
-    return None
+    record = []
+
+    for geo_id in geography_ids.items():
+        params = {
+            "get": acs_value_ids,
+            "for": "metropolitan%20statistical%20area/micropolitan%20statistical%20area:" + geo_id.value(),
+            "key": api_key
+        }
+        response = requests.get(url, json=params)
+        response.raise_for_status()
+        record.append(response.json())
+
+    data = pd.DataFrame(record)
+    return data        
+
+if __name__ == "__main__":
+    df_data = extract_acs(geography_ids, acs_value_ids, api_key)
+    con = duckdb.connect("dev.duckdb")
+    con.execute("CREATE OR REPLACE TABLE raw_acs_series AS SELECT * from df_data")
+    print(f"Loaded {len(df_data)} data rows")
