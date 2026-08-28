@@ -1,8 +1,3 @@
-import duckdb
-import pandas as pd
-
-con = duckdb.connect("dev.duckdb")
-
 '''
 https://download.bls.gov/pub/time.series/oe/
 
@@ -25,6 +20,10 @@ oe.series (raw_downloads dir, column headers below)
 oe.alldata (raw_downloads dir, column headers below)
     series_id year period value footnote_codes
 '''
+import duckdb
+import pandas as pd
+
+con = duckdb.connect("dev.duckdb")
 
 # oe.area
 area_codes = ["0012420", "0042660", "0016980", "0047900", "0035620"]  # AUS, SEA, CHI, DC, NYC
