@@ -1,6 +1,6 @@
 # DE Market Analysis
 
-Comparing DE-adjacent labor market and COL data across AUS, SEA, CHI, DC, and NYC, using dbt and DuckDB.
+Comparing Data Engineering adjacent labor market and COL data across AUS, SEA, CHI, DC, and NYC, using dbt and DuckDB.
 
 ## Data Sources
 
