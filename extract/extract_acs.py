@@ -51,7 +51,7 @@ def extract_acs(geography_ids, acs_value_ids, api_key):
     record = []
 
     for metro, geo_id in geography_ids.items():
-        get_str = ",".join(acs_value_ids)
+        get_str = ",".join(acs_value_ids) # "Name,B19013_001E,B25031_001E,B25077_001E"
         params = {
             "get": get_str,
             "for": "metropolitan statistical area/micropolitan statistical area:" + geo_id,
