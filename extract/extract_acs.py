@@ -24,7 +24,7 @@ Query shape:
     https://api.census.gov/data/2024/acs/acs5
     ?get=NAME,B19013_001E,B25031_001E,B25077_001E
     &for=metropolitan%20statistical%20area/micropolitan%20statistical%20area:12420
-    &key=YOUR_KEY
+    &key=ACS_KEY
 '''
 import requests
 import pandas as pd
@@ -50,15 +50,18 @@ def extract_acs(geography_ids, acs_value_ids, api_key):
 
     record = []
 
-    for geo_id in geography_ids.items():
+    for metro, geo_id in geography_ids.items():
+        get_str = ",".join(acs_value_ids)
         params = {
-            "get": acs_value_ids,
-            "for": "metropolitan%20statistical%20area/micropolitan%20statistical%20area:" + geo_id.value(),
+            "get": get_str,
+            "for": "metropolitan statistical area/micropolitan statistical area:" + geo_id,
             "key": api_key
         }
-        response = requests.get(url, json=params)
+        response = requests.get(url, params=params)
         response.raise_for_status()
-        record.append(response.json())
+        result = response.json() # response is in the format [["header1", "header2", ...], ["value1", "value2", ...]]
+        row = dict(zip(result[0], result[1])) # zip() pairs each header with corresponding value into tuples, dict() turns into key-value pairs.
+        record.append(row)
 
     data = pd.DataFrame(record)
     return data        
