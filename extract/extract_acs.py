@@ -26,6 +26,7 @@ Query shape:
     &for=metropolitan%20statistical%20area/micropolitan%20statistical%20area:12420
     &key=ACS_KEY
 '''
+#%%
 import requests
 import pandas as pd
 import duckdb
@@ -69,5 +70,6 @@ def extract_acs(geography_ids, acs_value_ids, api_key):
 if __name__ == "__main__":
     df_data = extract_acs(geography_ids, acs_value_ids, api_key)
     con = duckdb.connect("dev.duckdb")
-    con.execute("CREATE OR REPLACE TABLE raw_acs_series AS SELECT * from df_data")
+    con.execute("CREATE OR REPLACE TABLE raw_acs_data AS SELECT * from df_data")
+    con.execute("SELECT * FROM raw_acs_data").df()
     print(f"Loaded {len(df_data)} data rows")
