@@ -1,0 +1,9 @@
+sources:
+  - name: raw
+    schema: main
+    tables:
+      - name: raw_laus_series
+      - name: raw_laus_data
+      - name: raw_oews_series
+      - name: raw_oews_data
+      - name: raw_acs_data
