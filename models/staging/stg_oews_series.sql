@@ -27,6 +27,7 @@ renamed AS (
         END AS occupation_name,
         CASE
             WHEN datatype_code = '01' THEN 'employment'
+            WHEN datatype_code = '03' THEN 'hourly_mean_wage'
             WHEN datatype_code = '04' THEN 'annual_mean_wage'
             WHEN datatype_code = '13' THEN 'annual_median_wage'
             WHEN datatype_code = '17' THEN 'location_quotient'
