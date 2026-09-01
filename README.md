@@ -1,12 +1,12 @@
 # DE Market Analysis
 
-Comparing Data Engineering adjacent labor market and COL data across AUS, SEA, CHI, DC, and NYC, using dbt and DuckDB.
+Comparing Data Engineering adjacent labor market and Cost of Living data across AUS, SEA, CHI, DC, and NYC, using dbt and DuckDB.
 
 ## Data Sources
 
 - **BLS LAUS** — monthly unemployment/labor force data per metro, via the BLS API
 - **BLS OEWS** — employment and wages for DE-adjacent occupations per metro. The API only returns the current year, so historical data comes from BLS's bulk flat files instead.
-- **Census ACS** — cost-of-living data (income, rent, home value) per metro
+- **Census ACS** — COL data (income, rent, home value) per metro
 
 ## Notes
 - All LAUS series use not-seasonally-adjusted data
