@@ -15,4 +15,4 @@ con.execute("SELECT * FROM stg_oews_data LIMIT 5").df()
 con.execute("SELECT * FROM stg_acs_data").df()
 
 con.execute("SELECT * FROM int_laus_wide ORDER BY area_abbr, data_date DESC").df()
-con.execute("SELECT DISTINCT series_title FROM stg_oews_series WHERE area_abbr = 'DC' and occupation_name = 'Database Administrators'").df()
+con.execute("SELECT * FROM int_oews_wide ORDER BY area_abbr, occupation_name").df()
