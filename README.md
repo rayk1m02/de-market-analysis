@@ -5,7 +5,7 @@ Comparing Data Engineering adjacent labor market and Cost of Living data across 
 ## Data Sources
 
 - **BLS LAUS** — monthly unemployment/labor force data per metro, via the BLS API
-- **BLS OEWS** — employment and wages for DE-adjacent occupations per metro. The API only returns the current year, so historical data comes from BLS's bulk flat files instead.
+- **BLS OEWS** — employment and wages for DE-adjacent occupations per metro. Pulled from BLS's bulk flat files instead of the API, since the API only returned the recent year. Turns out, the flat files are also limited to recent year (2025), since BLS reissues new series IDs each release cycle rather than extending history. True multi-year depth will build up as this pipeline gets rerun over time. In hindsight, the API alone could have gotten a similar result with less file manipulation, but the flat files also provided essential area and occupation reference tables and were more reliable for pulling 340 specific series.
 - **Census ACS** — COL data (income, rent, home value) per metro
 
 ## Notes
