@@ -18,6 +18,9 @@ Comparing Data Engineering adjacent labor market and Cost of Living data across 
     - Washington-Arlington-Alexandria, DC-VA-MD-WV
     - New York-Newark-Jersey City, NY-NJ
 - COL data (ACS) lags roughly 1-2 years behind labor market data (LAUS/OEWS) due to each source's release cadence. Comparisons should be read as approximately concurrent, not simultaneous. 
+- A small number of individual data points in the source LAUS data are
+  suppressed by BLS (marked `-`) and converted to NULL in staging. This
+  can surface as NaN in derived columns like month-over-month change.
 
 ## Insights
 - DC's median household income exceeds NYC's ($126,684 vs. $99,155), likely reflecting DC's labor market concentration in high-paying government and consulting sectors, versus NYC's broader metro definition, which includes lower-cost outer boroughs / New Jersey suburbs.
