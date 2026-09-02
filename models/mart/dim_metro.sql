@@ -1,4 +1,4 @@
-# descriptive information about the five metros
+-- descriptive information about the five metros
 
 WITH laus_metros AS (
     SELECT DISTINCT
