@@ -19,7 +19,7 @@ Comparing Data Engineering adjacent labor market and Cost of Living data across 
     - New York-Newark-Jersey City, NY-NJ
 - COL data (ACS) lags roughly 1-2 years behind labor market data (LAUS/OEWS) due to each source's release cadence. Comparisons should be read as approximately concurrent, not simultaneous. 
 - A small number of individual data points in the source LAUS data are suppressed by BLS (marked `-`) and converted to NULL in staging. This can surface as NaN in derived columns like month-over-month change.
-- `labor_market_rank` in `fct_labor_market` only computes when all five metros have data for a given month. BLS may publish the most recent month for some metros before others (Seattle's July 2026 data landed before Austin's), which would otherwise produce a misleading rank of 1 for a metro competing against no other.
+- `labor_market_rank` in `fct_labor_market` will only compute when all five metros have data for a given month. BLS may publish the most recent month for some metros before others (Seattle's July 2026 data landed before Austin's), which would otherwise produce a misleading rank of 1 for a metro competing against no other.
 
 ## Insights
 - DC's median household income exceeds NYC's ($126,684 vs. $99,155), likely reflecting DC's labor market concentration in high-paying government and consulting sectors, versus NYC's broader metro definition, which includes lower-cost outer boroughs / New Jersey suburbs.
