@@ -15,7 +15,7 @@ con.execute("SELECT * FROM stg_oews_data LIMIT 5").df()
 con.execute("SELECT * FROM stg_acs_data").df()
 
 con.execute("SELECT * FROM int_laus_wide ORDER BY area_abbr, data_date DESC LIMIT 10").df()
-con.execute("SELECT * FROM int_oews_wide ORDER BY area_abbr, occupation_name LIMIT 10").df()
+con.execute("SELECT * FROM int_oews_wide ORDER BY area_abbr, occupation_name LIMIT 25").df()
 
 con.execute("SELECT * FROM dim_metro").df()
 con.execute("SELECT * FROM fct_labor_market ORDER BY area_abbr DESC, data_date DESC LIMIT 50").df()
