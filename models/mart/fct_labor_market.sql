@@ -16,10 +16,11 @@ SELECT
         ORDER BY l.data_date
         ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
     ), 2) AS unemp_rate_3mo_avg,
-    RANK() OVER (
-        PARTITION BY l.data_date
-        ORDER BY l.unemployment_rate ASC
-    ) AS labor_market_rank
+    CASE
+        WHEN COUNT(*) OVER (PARTITION BY l.data_date) = 5 THEN 
+            RANK() OVER (PARTITION BY l.data_date ORDER BY l.unemployment_rate ASC) 
+        ELSE NULL
+    END AS labor_market_rank
 FROM {{ ref('int_laus_wide') }} l
 LEFT JOIN {{ ref('dim_metro') }} d
     ON l.area_abbr = d.area_abbr
