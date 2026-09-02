@@ -27,6 +27,7 @@ Comparing Data Engineering adjacent labor market and Cost of Living data across 
 - DC shows the highest Database Architect concentration of any metro (location quotient 3.5, rougly 3.5x the national average). This reinforces the previous finding on DC's labor market and its density in certain sectors and roles.
 - Chicago has a larger raw Software Developer count than Austin (40,370 vs. 31,960), but a lower location quotient (0.82 vs. 2.28). As LQ measures *relative* concentration, this indicates software roles make up a larger share of Austin's overall economy than Chicago's.
 - Across all five metros, Database Administrator and Database Architect roles consistently sit on the lower end of both employment and wages compared to Software Developer and Data Scientist, despite DBA being the closest occupational match to this project's own career target. Software Developer shows the highest wages and location quotients in nearly every metro, but it is also the broadest of the four occupations listed and is likely the most exposed to AI driven hiring shifts through 2026 and onwards.
+- Database Architect's annual mean wage is higher than Software Developer's in 3 of 5 metros (Austin, Chicago, DC), while the reverse holds in Seattle and New York. Software Developer location quotient doesn't explain the split (Seattle and Austin both show high tech concentration, yet only one shows this pattern). The actual driver isn't clear from this data alone and would need further investigation.
 
 ## Setup
 
