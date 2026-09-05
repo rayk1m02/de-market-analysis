@@ -8,8 +8,8 @@ SELECT
     o.annual_mean_wage,
     o.annual_median_wage,
     o.location_quotient,
-    RANK() OVER (PARTITION BY area_abbr ORDER BY annual_mean_wage DESC) AS occupation_wage_rank,
-    ROUND(annual_mean_wage - annual_median_wage, 2) AS mean_median_wage_gap
+    RANK() OVER (PARTITION BY d.area_abbr ORDER BY o.annual_mean_wage DESC) AS occupation_wage_rank,
+    ROUND(o.annual_mean_wage - o.annual_median_wage, 2) AS mean_median_wage_gap
 FROM {{ ref('int_oews_wide') }} o
 LEFT JOIN {{ ref('dim_metro') }} d
     ON o.area_abbr = d.area_abbr
