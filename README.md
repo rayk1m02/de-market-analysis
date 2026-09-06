@@ -31,6 +31,7 @@ Comparing Data Engineering adjacent labor market and Cost of Living data across 
 - DC ranks 1st among all five metros for Database Architect wages specifically, but is consistenly 3rd for the other three occupations. It never ranks in the bottom two for any occupation however, which is more consistent than the other metros. DC could be described as "consistently mid to upper".
 - Seattle ranks 1st among all five metros for three of four occupations, but drops to last place for Database Architect wages specifically. This is not explained by a smaller market for that role, as the employment count and location quotient are both mid to high relative to the other metros. The actual drive for that is not clear from this data alone.
 - Roughly half of all metro/occupations show a negative mean-median wage gap (median wage exceeds mean), which is somewhat unusual as wage data is typically right-skewed by a small portion of high earners. The underlying drive for that is also not clear from this data alone.
+- Adjusting for cost of living changes the picture substantially. Chicago offers the best affordability across every occupation, including for Database Administrator specifically, despite Chicago having the lowest raw DBA wage of any metro. DC and Seattle, despite paying competitively, show the worst DBA affordability outcomes once rent and home values are factored in.
 
 ## Setup
 
