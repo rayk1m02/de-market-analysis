@@ -1,14 +1,14 @@
-/**
-core
-- DE-adjacent wages adjusted for cost of living, per metro
-    fct_occupation x fct_cost_of_living
-
-other
-- correlation between annual mean wage and location quotient (fct_occupation). 
-    does higher wage concentration track with higher ocupational density?
-- correlation between annual mean wage and employment, factoring in location quotient
-    does a larger occupational workforce relate to wage level, and does concentration change that relationship?
-- employment percentage per occupation, per metro
-    fct_occupation.employment / fct_labor_market.labor_force
-    note - grain mismatch (monthly vs. annual snapshot) needs a decision on which labor_force month to use before building this
-*/
+SELECT
+    d.area_abbr,
+    d.area_name,
+    o.occupation_name,
+    o.annual_mean_wage,
+    c.rent,
+    c.home_value,
+    ROUND((c.rent * 12) / o.annual_mean_wage * 100, 2) AS rent_pct_of_wage,
+    ROUND(c.home_value / o.annual_mean_wage, 2) AS years_to_afford_home
+FROM {{ ref('fct_occupation') }} o
+LEFT JOIN {{ ref('fct_cost_of_living') }} c
+    ON o.area_abbr = c.area_abbr
+LEFT JOIN {{ ref('dim_metro') }} d
+    ON o.area_abbr = d.area_abbr
