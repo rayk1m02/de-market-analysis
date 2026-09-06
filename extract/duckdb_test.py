@@ -33,16 +33,14 @@ con.execute("""
     ORDER BY area_abbr, rent_pct_of_wage ASC
     """).df()
 
-'''
-other
-- annual mean wage vs location quotient (does higher wage track with higher ocupational density)
-    fct_occupation X fct_occupation
-- correlation between annual mean wage and employment, factoring in location quotient
-    fct_occupation X fct_occcupation
-    does a higher employment count relate to wage level, and does concentration change that relationship?
-- employment percentage per occupation, per metro 
-    fct_occupation X fct_labor_market
-    note - grain mismatch (monthly vs. annual snapshot) needs a decision on which labor_force month to use before building this
-- labor force count / home value or rent value (does higher labor force count equate to higher or lower rent or home value / any correlation?) 
-    - fct_labor_market X fct_acs_data
-'''
+con.execute("SELECT CORR(annual_mean_wage, location_quotient) FROM fct_occupation").df()
+con.execute("SELECT CORR(annual_mean_wage, employment) FROM fct_occupation").df()
+
+con.execute("SELECT area_abbr, occupation_name, employment, avg_labor_force_2025, occupation_share_pct FROM mart_occupation_share").df()
+con.execute("SELECT * FROM mart_labor_force_vs_col").df()
+con.execute("""
+    SELECT 
+        CORR(avg_labor_force_2025, rent) AS corr_labor_force_rent,
+        CORR(avg_labor_force_2025, home_value) AS corr_labor_force_home_value
+    FROM mart_labor_force_vs_col
+""").df()
