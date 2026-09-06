@@ -19,4 +19,8 @@ con.execute("SELECT * FROM int_oews_wide ORDER BY area_abbr, occupation_name LIM
 
 con.execute("SELECT * FROM dim_metro").df()
 con.execute("SELECT * FROM fct_labor_market ORDER BY area_abbr DESC, data_date DESC LIMIT 10").df()
-con.execute("SELECT * FROM fct_occupation ORDER BY area_abbr DESC").df()
+con.execute("""
+    SELECT area_abbr, occupation_name, annual_mean_wage, occupation_wage_rank, metro_wage_rank, mean_median_wage_gap
+    FROM fct_occupation 
+    ORDER BY area_abbr, occupation_wage_rank
+""").df()
