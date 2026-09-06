@@ -1,0 +1,56 @@
+models:
+  # Dimension tables
+  - name: dim_metro
+    columns:
+      - name: area_abbr
+        data_tests:
+          - unique
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - AUS
+                  - SEA
+                  - CHI
+                  - DC
+                  - NY
+
+  # Fact tables
+  - name: fct_labor_market
+    columns:
+      - name: area_abbr
+        data_tests:
+          - not_null
+
+  - name: fct_occupation
+    columns:
+      - name: area_abbr
+        data_tests:
+          - not_null
+
+  - name: fct_cost_of_living
+    columns:
+      - name: area_abbr
+        data_tests:
+          - unique
+          - not_null
+
+  # Mart tables
+  - name: mart_wage_vs_col
+    columns:
+      - name: area_abbr
+        data_tests:
+          - not_null
+
+  - name: mart_occupation_share
+    columns:
+      - name: area_abbr
+        data_tests:
+          - not_null
+
+  - name: mart_labor_force_vs_col
+    columns:
+      - name: area_abbr
+        data_tests:
+          - unique
+          - not_null

@@ -1,0 +1,18 @@
+models:
+  - name: int_laus_wide
+    columns:
+      - name: area_abbr
+        data_tests:
+          - not_null
+      - name: data_date
+        data_tests:
+          - not_null
+
+  - name: int_oews_wide
+    columns:
+      - name: area_abbr
+        data_tests:
+          - not_null
+      - name: occupation_name
+        data_tests:
+          - not_null
