@@ -8,7 +8,8 @@ SELECT
     o.annual_mean_wage,
     o.annual_median_wage,
     o.location_quotient,
-    RANK() OVER (PARTITION BY o.area_abbr ORDER BY o.annual_mean_wage DESC) AS occupation_wage_rank,
+    RANK() OVER (PARTITION BY o.area_abbr ORDER BY o.annual_mean_wage DESC) AS occupation_wage_rank,  -- for this metro, which occupation has the highest pay
+    RANK() OVER (PARTITION BY o.occupation_name ORDER BY o.annual_mean_wage DESC) AS metro_wage_rank,  -- for this occupation, which metro has the highest pay
     ROUND(o.annual_mean_wage - o.annual_median_wage, 2) AS mean_median_wage_gap
 FROM {{ ref('int_oews_wide') }} o
 LEFT JOIN {{ ref('dim_metro') }} d
