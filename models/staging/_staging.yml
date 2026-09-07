@@ -1,33 +1,95 @@
 models:
   - name: stg_laus_series
+    description: One row per LAUS series ID, with readable metro and measure labels derived from the series ID structure.
     columns:
       - name: series_id
+        description: Unique BLS LAUS series identifier.
         data_tests:
           - unique
           - not_null
+      - name: area_abbr
+        description: Short metro code derived from the area name (AUS, SEA, CHI, DC, NY).
+        data_tests:
+          - not_null
+      - name: measure_type
+        description: >
+          The specific LAUS measure this series represents, decoded from the last 
+          two digits of series_id (unemployment_rate, unemployment, employment, labor_force).
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [unemployment_rate, unemployment, employment, labor_force]
 
   - name: stg_laus_data
+    description: LAUS monthly values, one row per series per period. Suppressed BLS values ("-") are converted to NULL.
     columns:
       - name: series_id
+        description: References stg_laus_series.series_id.
         data_tests:
           - not_null
+      - name: data_date
+        description: First-of-month date constructed from year and period. Annual-average rows (period M13) are excluded.
+        data_tests:
+          - not_null
+      - name: value
+        description: The raw measure value for this series and date, cast to float.
 
   - name: stg_oews_series
+    description: One row per OEWS series ID (metro x occupation x measure), with readable labels for area, occupation, and measure type.
     columns:
       - name: series_id
+        description: Unique BLS OEWS series identifier.
         data_tests:
           - unique
+          - not_null
+      - name: area_abbr
+        description: Short metro code, derived from area_code.
+        data_tests:
+          - not_null
+      - name: occupation_name
+        description: Readable occupation name, decoded from occupation_code.
+        data_tests:
+          - not_null
+      - name: measure_type
+        description: >
+          The specific OEWS measure this series represents (employment, hourly_mean_wage, 
+          annual_mean_wage, annual_median_wage, location_quotient, or "other" for unused measures).
+        data_tests:
           - not_null
 
   - name: stg_oews_data
+    description: >
+      OEWS values, one row per series. Reflects a single year
+      snapshot (2025) — BLS's OEWS API only returns the recent year, and
+      the bulk flat files used here are also effectively recent-year only,
+      since BLS reissues new series IDs each release cycle rather than
+      extending history.
     columns:
       - name: series_id
+        description: References stg_oews_series.series_id.
         data_tests:
           - not_null
+      - name: year
+        description: The year this snapshot reflects. Currently always 2025.
+        data_tests:
+          - not_null
+      - name: value
+        description: The raw measure value for this series, cast to float.
 
   - name: stg_acs_data
+    description: One row per metro, with Census ACS 5-year estimates for median household income, gross rent, and home value.
     columns:
       - name: area_abbr
+        description: Short metro code, derived from the ACS area name.
         data_tests:
           - unique
           - not_null
+      - name: income
+        description: Median household income (past 12 months).
+      - name: rent
+        description: Median gross rent, monthly, across all bedroom counts.
+      - name: home_value
+        description: Median home value.
+      - name: metro_code
+        description: Census CBSA code for this metro.

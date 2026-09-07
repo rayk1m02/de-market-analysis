@@ -1,18 +1,24 @@
 models:
   - name: int_laus_wide
+    description: LAUS data pivoted from long to wide format. One row per metro per month, with unemployment_rate, unemployment, employment, and labor_force as separate columns.
     columns:
       - name: area_abbr
+        description: Short metro code.
         data_tests:
           - not_null
       - name: data_date
+        description: First-of-month date for this row's figures.
         data_tests:
           - not_null
 
   - name: int_oews_wide
+    description: OEWS data pivoted from long to wide format. One row per metro per occupation, with the five tracked measures as separate columns. Data is a 2025 snapshot.
     columns:
       - name: area_abbr
+        description: Short metro code.
         data_tests:
           - not_null
       - name: occupation_name
+        description: The occupation this row represents.
         data_tests:
           - not_null

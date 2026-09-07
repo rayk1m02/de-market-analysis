@@ -1,56 +1,104 @@
 models:
-  # Dimension tables
   - name: dim_metro
+    description: One row per target metro, with area codes across all three data sources for joining.
     columns:
       - name: area_abbr
+        description: Short metro code used as the join key across all fact tables.
         data_tests:
           - unique
           - not_null
           - accepted_values:
               arguments:
-                values:
-                  - AUS
-                  - SEA
-                  - CHI
-                  - DC
-                  - NY
+                values: [AUS, SEA, CHI, DC, NY]
+      - name: area_name
+        description: Full metro name, sourced from LAUS.
+      - name: oews_area_code
+        description: BLS OEWS area code for this metro.
+      - name: acs_cbsa_code
+        description: Census CBSA code for this metro.
 
-  # Fact tables
   - name: fct_labor_market
+    description: Monthly LAUS labor market figures per metro, joined to dim_metro, with derived trend and ranking metrics.
     columns:
       - name: area_abbr
+        description: References dim_metro.area_abbr.
         data_tests:
           - not_null
+      - name: emp_pct_change
+        description: Month-over-month percent change in employment for this metro.
+      - name: unemp_rate_change
+        description: Month-over-month change in unemployment rate, in percentage points (not percent change).
+      - name: unemp_rate_3mo_avg
+        description: Trailing 3-month average unemployment rate for this metro.
+      - name: labor_market_rank
+        description: >
+          Rank of this metro's unemployment rate among all five metros for
+          this month (1 = lowest/tightest). NULL if fewer than 5 metros
+          have data for this month, since BLS sometimes publishes the
+          most recent month for some metros before others.
 
   - name: fct_occupation
+    description: OEWS occupation employment and wage figures per metro, joined to dim_metro, with derived wage rankings. Data is a single 2025 snapshot.
     columns:
       - name: area_abbr
+        description: References dim_metro.area_abbr.
         data_tests:
           - not_null
+      - name: occupation_wage_rank
+        description: Rank of this occupation's wage among the four tracked occupations, within this metro (1 = highest paid).
+      - name: metro_wage_rank
+        description: Rank of this metro's wage for this occupation, among all five metros (1 = highest paid).
+      - name: mean_median_wage_gap
+        description: Annual mean wage minus annual median wage. Positive indicates high earners pulling the average up while negative indicates the reverse.
 
   - name: fct_cost_of_living
+    description: ACS cost-of-living figures per metro, joined to dim_metro, with a rent ranking.
     columns:
       - name: area_abbr
+        description: References dim_metro.area_abbr.
         data_tests:
           - unique
           - not_null
+      - name: rent_rank
+        description: Rank of this metro's rent among all five metros (1 = highest rent).
 
-  # Mart tables
   - name: mart_wage_vs_col
+    description: Core project deliverable. DE-adjacent occupation wages compared against cost of living, per metro. Joins fct_occupation and fct_cost_of_living.
     columns:
       - name: area_abbr
+        description: References dim_metro.area_abbr.
         data_tests:
           - not_null
+      - name: rent_pct_of_wage
+        description: Annualized rent as a percentage of this occupation's annual mean wage.
+      - name: years_to_afford_home
+        description: >
+          Years of this occupation's annual mean wage required to equal the
+          metro's median home value. A relative comparison metric, not a
+          literal savings timeline. In practice, a household would spend
+          only a portion of income on housing
 
   - name: mart_occupation_share
+    description: >
+      Each occupation's employment as a percentage of the metro's total
+      labor force. Labor force uses the 2025 monthly average from
+      fct_labor_market, since OEWS is an annual snapshot and LAUS is
+      monthly.
     columns:
       - name: area_abbr
+        description: References dim_metro.area_abbr.
         data_tests:
           - not_null
+      - name: occupation_share_pct
+        description: This occupation's employment as a percentage of the metro's average 2025 labor force.
 
   - name: mart_labor_force_vs_col
+    description: >
+      Metro-level labor force size compared against rent and home value. 
+      Retained despite a weak/inconclusive correlation result, given the small sample size (5 metros).
     columns:
       - name: area_abbr
+        description: References dim_metro.area_abbr.
         data_tests:
           - unique
           - not_null

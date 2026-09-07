@@ -1,7 +1,5 @@
 
-# Name your project! Project names should contain only lowercase characters
-# and underscores. A good package name should reflect your organization's
-# name or the intended use of these models
+# Project name
 name: 'de_market_analysis'
 version: '1.0.0'
 
@@ -22,7 +20,6 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
-
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
@@ -36,5 +33,5 @@ models:
       +materialized: view 
     intermediate:
       +materialized: view
-    marts:
+    mart:
       +materialized: table
