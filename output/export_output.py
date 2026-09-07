@@ -11,7 +11,11 @@ import os
 con = duckdb.connect("dev.duckdb")
 
 def fmt_currency(x):
-    return "" if pd.isna(x) else f"${x:,.0f}"
+    if pd.isna(x):
+        return ""
+    elif x < 0:
+        return f"-${abs(x):,.0f}"
+    return f"${x:,.0f}"
 
 def fmt_number(x):
     return "" if pd.isna(x) else f"{x:,.0f}"
