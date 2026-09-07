@@ -35,10 +35,12 @@ Comparing Data Engineering adjacent labor market and Cost of Living data across 
 - A labor-force-vs-cost-of-living comparison was also explored: total labor force size shows no meaningful correlation with rent (r = -0.14) or home value (r = 0.05) across the five metros. With only five data points, this should be read as inconclusive rather than a genuine null result
 
 ## Output
-Metro abbreviations: AUS = Austin-Round Rock-San Marcos, TX · SEA =
-Seattle-Tacoma-Bellevue, WA · CHI = Chicago-Naperville-Elgin, IL-IN ·
-DC = Washington-Arlington-Alexandria, DC-VA-MD-WV · NY =
-New York-Newark-Jersey City, NY-NJ
+Metro abbreviations:
+- AUS = Austin-Round Rock-San Marcos, TX
+- SEA = Seattle-Tacoma-Bellevue, WA
+- CHI = Chicago-Naperville-Elgin, IL-IN
+- DC = Washington-Arlington-Alexandria, DC-VA-MD-WV
+- NY = New York-Newark-Jersey City, NY-NJ
 
 Final mart results, exported for quick review without running the full pipeline:
 - [`fct_occupation.csv`](output/fct_occupation.csv)
