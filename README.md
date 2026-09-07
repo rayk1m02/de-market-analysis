@@ -3,7 +3,6 @@
 Comparing Data Engineering adjacent labor market and Cost of Living data across AUS, SEA, CHI, DC, and NYC, using dbt and DuckDB.
 
 ## Data Sources
-
 - **BLS LAUS** — monthly unemployment/labor force data per metro, via the BLS API
 - **BLS OEWS** — employment and wages for DE-adjacent occupations per metro. Pulled from BLS's bulk flat files instead of the API, since the API only returned the recent year. Turns out, the flat files are also limited to recent year (2025), since BLS reissues new series IDs each release cycle rather than extending history. True multi-year depth will build up as this pipeline gets rerun over time. In hindsight, the API alone could have gotten a similar result with less file manipulation, but the flat files also provided essential area and occupation reference tables and were more reliable for pulling 340 specific series.
 - **Census ACS** — COL data (income, rent, home value) per metro
@@ -35,8 +34,19 @@ Comparing Data Engineering adjacent labor market and Cost of Living data across 
 - Annual mean wage shows a moderate positive correlation with location quotient (r = 0.46) and a moderate-to-strong positive correlation with employment count (r = 0.65) across the 20 metro/occupation combinations in this dataset. Employment size appears to track more closely with wage than occupational concentration does, though with only 20 data points, these correlations should be read as suggestive rather than conclusive.
 - A labor-force-vs-cost-of-living comparison was also explored: total labor force size shows no meaningful correlation with rent (r = -0.14) or home value (r = 0.05) across the five metros. With only five data points, this should be read as inconclusive rather than a genuine null result
 
-## Setup
+## Output
+Metro abbreviations: AUS = Austin-Round Rock-San Marcos, TX · SEA =
+Seattle-Tacoma-Bellevue, WA · CHI = Chicago-Naperville-Elgin, IL-IN ·
+DC = Washington-Arlington-Alexandria, DC-VA-MD-WV · NY =
+New York-Newark-Jersey City, NY-NJ
 
+Final mart results, exported for quick review without running the full pipeline:
+- [`fct_occupation.csv`](output/fct_occupation.csv)
+- [`mart_wage_vs_col.csv`](output/mart_wage_vs_col.csv) — core deliverable
+- [`mart_occupation_share.csv`](output/mart_occupation_share.csv)
+- [`mart_labor_force_vs_col.csv`](output/mart_labor_force_vs_col.csv)
+
+## Setup
 ​```bash
 python -m venv .venv
 .venv\Scripts\Activate.ps1
@@ -44,7 +54,5 @@ pip install -r requirements.txt
 ​```
 
 ​Create a `.env` file:
-
 ```BLS_API_KEY=your_key_here```
-
 ```ACS_API_KEY=your_key_here```
