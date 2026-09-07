@@ -28,7 +28,6 @@ os.makedirs("output", exist_ok=True) # if directory DNE, create it, else nothing
 df = con.execute("""
     SELECT 
         area_abbr, 
-        area_name, 
         occupation_name, 
         employment, 
         hourly_mean_wage,
@@ -53,7 +52,6 @@ df.to_csv("output/fct_occupation.csv", index=False)
 df = con.execute("""
     SELECT 
         area_abbr, 
-        area_name, 
         occupation_name, 
         annual_mean_wage, 
         rent,
@@ -90,7 +88,6 @@ df.to_csv("output/mart_occupation_share.csv", index=False)
 df = con.execute("""
     SELECT
         area_abbr,
-        area_name,
         avg_labor_force_2025,
         rent,
         home_value
