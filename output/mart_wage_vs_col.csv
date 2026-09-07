@@ -1,21 +1,21 @@
-area_abbr,area_name,occupation_name,annual_mean_wage,rent,home_value,rent_pct_of_wage,years_to_afford_home
-AUS,"Austin-Round Rock-San Marcos, TX Metropolitan Statistical Area",Database Architects,"$147,860","$1,726","$465,000",14.01%,3.14
-AUS,"Austin-Round Rock-San Marcos, TX Metropolitan Statistical Area",Software Developers,"$143,630","$1,726","$465,000",14.42%,3.24
-AUS,"Austin-Round Rock-San Marcos, TX Metropolitan Statistical Area",Data Scientists,"$126,830","$1,726","$465,000",16.33%,3.67
-AUS,"Austin-Round Rock-San Marcos, TX Metropolitan Statistical Area",Database Administrators,"$117,420","$1,726","$465,000",17.64%,3.96
-CHI,"Chicago-Naperville-Elgin, IL-IN Metropolitan Statistical Area",Database Architects,"$146,080","$1,430","$323,000",11.75%,2.21
-CHI,"Chicago-Naperville-Elgin, IL-IN Metropolitan Statistical Area",Software Developers,"$141,640","$1,430","$323,000",12.12%,2.28
-CHI,"Chicago-Naperville-Elgin, IL-IN Metropolitan Statistical Area",Data Scientists,"$118,860","$1,430","$323,000",14.44%,2.72
-CHI,"Chicago-Naperville-Elgin, IL-IN Metropolitan Statistical Area",Database Administrators,"$111,210","$1,430","$323,000",15.43%,2.90
-DC,"Washington-Arlington-Alexandria, DC-VA-MD-WV Metropolitan Statistical Area",Database Architects,"$159,980","$2,027","$579,900",15.20%,3.62
-DC,"Washington-Arlington-Alexandria, DC-VA-MD-WV Metropolitan Statistical Area",Software Developers,"$153,100","$2,027","$579,900",15.89%,3.79
-DC,"Washington-Arlington-Alexandria, DC-VA-MD-WV Metropolitan Statistical Area",Data Scientists,"$143,510","$2,027","$579,900",16.95%,4.04
-DC,"Washington-Arlington-Alexandria, DC-VA-MD-WV Metropolitan Statistical Area",Database Administrators,"$119,320","$2,027","$579,900",20.39%,4.86
-NY,"New York-Newark-Jersey City, NY-NJ Metropolitan Statistical Area",Software Developers,"$165,870","$1,830","$614,200",13.24%,3.70
-NY,"New York-Newark-Jersey City, NY-NJ Metropolitan Statistical Area",Data Scientists,"$144,700","$1,830","$614,200",15.18%,4.24
-NY,"New York-Newark-Jersey City, NY-NJ Metropolitan Statistical Area",Database Architects,"$140,400","$1,830","$614,200",15.64%,4.37
-NY,"New York-Newark-Jersey City, NY-NJ Metropolitan Statistical Area",Database Administrators,"$125,550","$1,830","$614,200",17.49%,4.89
-SEA,"Seattle-Tacoma-Bellevue, WA Metropolitan Statistical Area",Software Developers,"$174,920","$2,000","$717,500",13.72%,4.10
-SEA,"Seattle-Tacoma-Bellevue, WA Metropolitan Statistical Area",Data Scientists,"$160,460","$2,000","$717,500",14.96%,4.47
-SEA,"Seattle-Tacoma-Bellevue, WA Metropolitan Statistical Area",Database Architects,"$133,670","$2,000","$717,500",17.95%,5.37
-SEA,"Seattle-Tacoma-Bellevue, WA Metropolitan Statistical Area",Database Administrators,"$131,460","$2,000","$717,500",18.26%,5.46
+area_abbr,occupation_name,annual_mean_wage,rent,home_value,rent_pct_of_wage,years_to_afford_home
+AUS,Database Architects,"$147,860","$1,726","$465,000",14.01%,3.14
+AUS,Software Developers,"$143,630","$1,726","$465,000",14.42%,3.24
+AUS,Data Scientists,"$126,830","$1,726","$465,000",16.33%,3.67
+AUS,Database Administrators,"$117,420","$1,726","$465,000",17.64%,3.96
+CHI,Database Architects,"$146,080","$1,430","$323,000",11.75%,2.21
+CHI,Software Developers,"$141,640","$1,430","$323,000",12.12%,2.28
+CHI,Data Scientists,"$118,860","$1,430","$323,000",14.44%,2.72
+CHI,Database Administrators,"$111,210","$1,430","$323,000",15.43%,2.90
+DC,Database Architects,"$159,980","$2,027","$579,900",15.20%,3.62
+DC,Software Developers,"$153,100","$2,027","$579,900",15.89%,3.79
+DC,Data Scientists,"$143,510","$2,027","$579,900",16.95%,4.04
+DC,Database Administrators,"$119,320","$2,027","$579,900",20.39%,4.86
+NY,Software Developers,"$165,870","$1,830","$614,200",13.24%,3.70
+NY,Data Scientists,"$144,700","$1,830","$614,200",15.18%,4.24
+NY,Database Architects,"$140,400","$1,830","$614,200",15.64%,4.37
+NY,Database Administrators,"$125,550","$1,830","$614,200",17.49%,4.89
+SEA,Software Developers,"$174,920","$2,000","$717,500",13.72%,4.10
+SEA,Data Scientists,"$160,460","$2,000","$717,500",14.96%,4.47
+SEA,Database Architects,"$133,670","$2,000","$717,500",17.95%,5.37
+SEA,Database Administrators,"$131,460","$2,000","$717,500",18.26%,5.46
