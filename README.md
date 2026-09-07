@@ -44,7 +44,7 @@ Metro abbreviations:
 
 Final mart results, exported for quick review without running the full pipeline:
 - [`fct_occupation.csv`](output/fct_occupation.csv)
-- [`mart_wage_vs_col.csv`](output/mart_wage_vs_col.csv) — core deliverable
+- [`mart_wage_vs_col.csv`](output/mart_wage_vs_col.csv)
 - [`mart_occupation_share.csv`](output/mart_occupation_share.csv)
 - [`mart_labor_force_vs_col.csv`](output/mart_labor_force_vs_col.csv)
 
