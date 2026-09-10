@@ -1,6 +1,6 @@
 sources:
   - name: raw
-    schema: main
+    schema: "{{ 'main' if target.name in ['dev', 'prod'] else 'public' }}"
     tables:
       - name: raw_laus_series
       - name: raw_laus_data
