@@ -8,7 +8,10 @@ renamed AS (
         CAST(year AS INT) AS year,
         period,
         CAST(value AS FLOAT) AS value,
-        CAST(footnote_codes AS INT) AS footnote_codes
+        CASE 
+            WHEN TRIM(footnote_codes) = '' THEN NULL
+            ELSE CAST(footnote_codes AS INT)
+        END AS footnote_codes
     FROM source
 )
 
